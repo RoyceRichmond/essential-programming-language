@@ -1,0 +1,79 @@
+(defun incr(a) ;increase variable
+    (incf a)
+)
+
+(defun decr(a) ;decrease variable
+    (decf a)
+)
+
+(defun clr(a);clear variable
+    (loop while (/= a 0)
+        do
+            (setq a (decr a))
+            (when (= a 0) (return a)) 
+    )
+)
+
+
+(defun assi (var1 var2);assign variable
+    (setq var1 (clr var1))
+    (setq aux 0)
+    (loop while (/= var2 0)
+        do (setq aux (incr aux))
+           (setq var2 (decr var2))
+    )
+    (loop while (/= aux 0)
+        do (setq var1 (incr var1))
+           (setq var2 (incr var2))
+           (setq aux (decr aux))
+           (when (= aux 0) (return var1))
+    )
+)
+
+(defun cero ();funcion cero
+    (setq z1 3)
+    (clr z1)
+)
+
+(defun suce(a);funcion sucesor
+    (setq z1 3)
+    (setq z1 (assi z1 a))
+    (setq z1 (incr z1))
+)
+
+
+(defun G (x1)
+    (setq z1 2)
+    (assi z1 x1)
+)
+
+(defun H (x3)
+    (setq z1 3)
+    (incr (assi z1 x3))
+)
+
+(defun suma (x1 x2)
+    (setq x3 1)
+    (setq z1 1)
+    (setq ax 1)
+    (setq z1 (G x1))
+    (setq ax (assi ax x2))
+    (setq x2 (clr x2))
+    (loop while (/= ax 0)
+        do (setq x3 (assi x3 z1))
+           (setq z1 (H x3))
+           (setq x2 (incr x2))
+           (setq ax (decr ax))
+           (when (= ax 0) (return z1))
+    )
+    
+)
+
+
+
+(defvar a 15)
+(defvar b 20)
+
+
+(write (suma a b))
+;(write (H 4))
