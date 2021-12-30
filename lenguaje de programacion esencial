@@ -3,13 +3,15 @@
 )
 
 (defun decr(a) ;decrease variable
-    (decf a)
+    (loop
+            (when (= a 0) (return a))
+            (decf a)
+            (return a)
+    )
 )
 
 (defun clr(a);clear variable
     (loop
-            (setq a (decr a))
-            (setq a (incr a))
             (when (= a 0) (return a))
             (setq a (decr a))
     )
