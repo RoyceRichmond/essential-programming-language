@@ -2,7 +2,7 @@
     (incf a)
 )
 
-(defun decr(a) ;decrease variable
+(defun decr(a) ;decrease variable until cero
     (loop
             (when (= a 0) (return a))
             (decf a)
@@ -10,7 +10,7 @@
     )
 )
 
-(defun clr(a);clear variable
+(defun clr(a) ;clear variable
     (loop
             (when (= a 0) (return a))
             (setq a (decr a))
@@ -18,18 +18,19 @@
 )
 
 
-(defun assi (var1 var2);assign variable
+(defun assi (var1 var2)   ;assign variable
     (setq var1 (clr var1))
     (setq aux 0)
-    (loop while (/= var2 0)
-        do (setq aux (incr aux))
-           (setq var2 (decr var2))
+    (loop
+            (when (= var2 0) (return var2))
+            (setq aux (incr aux))
+            (setq var2 (decr var2))
     )
-    (loop while (/= aux 0)
-        do (setq var1 (incr var1))
-           (setq var2 (incr var2))
-           (setq aux (decr aux))
-           (when (= aux 0) (return var1))
+    (loop
+            (when (= aux 0) (return var1))
+            (setq var1 (incr var1))
+            (setq var2 (incr var2))
+            (setq aux (decr aux))
     )
 )
 
@@ -55,7 +56,7 @@
     (incr (assi z1 x3))
 )
 
-(defun suma (x1 x2)
+(defun suma (x1 x2) ;funcion suma
     (setq x3 1)
     (setq z1 1)
     (setq ax 1)
@@ -71,6 +72,17 @@
     )
     
 )
+
+
+(defun mult (a b)
+    (setq aux 0)
+    (setq z 0)
+    (loop
+            (when (= aux 0) (return z))
+            (setq z (assi (suma a 0)))
+            (decr aux)
+    )    
+
 
 
 
