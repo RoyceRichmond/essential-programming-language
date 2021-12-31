@@ -90,6 +90,35 @@
     )
 )
 
+(defun div (x y)
+    (setq g 10)
+    (setq a 0)
+    (loop
+            (setq g (monus (suma x 1)  (suma (mult a y) y ) ))
+            (when (= g 0) (return a))
+            (setq a (suce a))
+    )
+)
+
+(defun A (x y)
+    (if (= x 0)
+        (+ y 1)
+        (if (and (> x 0) (zerop y))
+            (A (- x 1) 1)
+            (if (and (> x 0) (> y 0))
+                (A (- x 1) (A x (- y 1)))
+            )
+        )
+    )
+
+)
 
 
 (write (fib 12))
+
+
+
+(write a)    
+(write b)
+(write ax)
+(write z1) 

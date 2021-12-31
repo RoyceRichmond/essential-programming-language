@@ -63,14 +63,13 @@
     (setq z1 (G x1))
     (setq ax (assi ax x2))
     (setq x2 (clr x2))
-    (loop while (/= ax 0)
-        do (setq x3 (assi x3 z1))
-           (setq z1 (H x3))
-           (setq x2 (incr x2))
-           (setq ax (decr ax))
-           (when (= ax 0) (return z1))
+    (loop
+            (when (= ax 0) (return z1))
+            (setq x3 (assi x3 z1))
+            (setq z1 (H x3))
+            (setq x2 (incr x2))
+            (setq ax (decr ax))
     )
-    
 )
 
 
@@ -81,7 +80,52 @@
             (when (= aux 0) (return z))
             (setq z (assi (suma a 0)))
             (decr aux)
-    )    
+    )
+)    
+
+
+
+
+(defun mult (a b)
+    (setq ax 0)
+    (setq ax b)
+    (setq z1 0)
+    (setq z1 a)
+    (loop while (/= ax 0)
+        do (when (= ax 0) (return z1))
+            (setq ax (decr ax))
+            (write a)
+            (write b)
+            (write ax)
+            (write z1)
+           
+    )
+    
+)
+
+
+(defun mult (x1 x2)
+    (setq z1 1)
+    (setq ax 1)
+    (setq z1 (assi z1 x1))
+    (setq ax (assi z1 x2))
+
+            (write z1)
+            (write ax)
+
+    
+    (loop   
+            (write ax)
+            (setq z1 (suma 10 0))
+            (when (= ax 0) (return x1))
+            ;(setq z1 (assi z1 (suma z1 x2)))
+            (setq ax (decr ax))
+            
+            
+            
+    )
+)   
+
 
 
 
